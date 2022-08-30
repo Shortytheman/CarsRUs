@@ -1,10 +1,18 @@
 package dat3.cars.entity;
 
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 
 @Entity
 public class Car {
@@ -13,9 +21,16 @@ public class Car {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int carId;
 
+  @Column(nullable = false)
   private String brand;
+
+  @Column(nullable = false)
   private String model;
+
+  @Column
   private double pricePerDay;
+
+  @Column
   private double bestDiscount;
 
   @CreationTimestamp
@@ -24,51 +39,4 @@ public class Car {
   @UpdateTimestamp
   private LocalDateTime dateEdited;
 
-
-  public Car(String brand, String model, double pricePerDay, double bestDiscount) {
-    this.brand = brand;
-    this.model = model;
-    this.pricePerDay = pricePerDay;
-    this.bestDiscount = bestDiscount;
-  }
-
-  public Car(){
-
-  }
-
-  public int getCarId() {
-    return carId;
-  }
-
-  public String getBrand() {
-    return brand;
-  }
-
-  public void setBrand(String brand) {
-    this.brand = brand;
-  }
-
-  public String getModel() {
-    return model;
-  }
-
-  public void setModel(String model) {
-    this.model = model;
-  }
-
-  public double getPricePerDay() {
-    return pricePerDay;
-  }
-
-  public void setPricePerDay(double pricePerDay) {
-    this.pricePerDay = pricePerDay;
-  }
-
-  public double getBestDiscount() {
-    return bestDiscount;
-  }
-
-  public void setBestDiscount(double bestDiscount) {
-    this.bestDiscount = bestDiscount;
-  }
 }
